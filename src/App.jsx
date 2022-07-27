@@ -21,12 +21,18 @@ function App() {
           <AuthState>
             <Router>
               <Switch>
-                <Route exact path="/">
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+                <Route exact path="/nueva-cuenta">
+                  <NuevaCuenta />
+                </Route>
+                <Route exact path="/proyectos">
+                  <Proyectos />
+                </Route>
+                <Route path="/">
                   <Redirect to="/login"/>
                 </Route>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/nueva-cuenta" component={NuevaCuenta}/>
-                <Route exact path="/proyectos" component={Proyectos}/>
               </Switch>
             </Router>
           </AuthState>

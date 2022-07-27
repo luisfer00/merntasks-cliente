@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import alertaContext from "../../context/alertas/alertaContext";
 import authContext from "../../context/auth/authContext";
 
 const Login = (props) => {
+  const history = useHistory();
   const [cargando, setCargando] = useState(false);
   const { alerta, mostrarAlerta } = useContext(alertaContext);
   const { mensaje, autenticado, iniciarSesion } = useContext(authContext);
@@ -16,13 +17,13 @@ const Login = (props) => {
   useEffect(() => {
     setCargando(false);
     if (autenticado) {
-      props.history.push("/proyectos");
+      history.push("/proyectos");
     }
     if (mensaje) {
       mostrarAlerta(mensaje.msj, mensaje.categoria);
     }
     // eslint-disable-next-line
-  }, [mensaje, autenticado, props.history]);
+  }, [mensaje, autenticado]);
 
   const onChangeForm = (e) => {
     setUsuario({
